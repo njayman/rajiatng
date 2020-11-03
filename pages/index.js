@@ -1,65 +1,48 @@
+import { Fragment } from 'react'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+//import styles from '../styles/Home.module.scss'
+import axios from 'axios'
+import Layout from './components/layouts/Layout'
 
-export default function Home() {
+export default function Home({ products }) {
+  const router = useRouter()
   return (
-    <div className={styles.container}>
+    <Fragment>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Rajia Treat n Groceries</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <div className="home">
+        <div className="hero">
+          <div className="hero-card">
+            <h4>Rajia Treat and Groceries</h4>
+            <button onClick={() => router.push("/shop")}>Order now</button>
+          </div>
+          <div className="hero-slide">
+            <div className="hero-product-card">
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+            </div>
+          </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+        <div className="notice">
+          <h1>Opening soon</h1>
+          <p>Browse our <Link href="/shop"><a style={{ color: "blue" }}>shop</a></Link>. You can order by calling <Link href="tel:+8801711842891"><a style={{ color: "blue" }}>+8801711842891</a></Link>.</p>
+        </div>
+      </div>
+    </Fragment>
   )
 }
+
+export async function getStaticProps() {
+  const { data: products } = await axios.get('http://localhost:5000/api/products')
+
+  return {
+    props: {
+      products: products
+    }
+  }
+}
+
+Home.Layout = Layout;

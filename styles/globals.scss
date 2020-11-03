@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
+$linkColor: #cc3f0c;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #d8cbc7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+}
+
+.body {
+  padding: 0;
+  margin: 0;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  img {
+    height: 40px;
+    margin: 10px auto 10px 10px;
+  }
+  a {
+    margin: 10px;
+    font-weight: 700;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      color: $linkColor;
+      transform: scale(1.2);
+    }
+  }
+}
+
+.hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://i.ibb.co/0c7hBdy/protein-foods.jpg");
+  .hero-card {
+    background-color: #bebebed2;
+    padding: 50px;
+    h4 {
+      font-size: 35px;
+    }
+    button {
+      padding: 10px;
+      margin-top: 20px;
+      font-size: 20px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+    }
+  }
+  .hero-product-card {
+    background-color: #9a6c3857;
+    height: 335px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .card__image__container {
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+    .card__body {
+      display: flex;
+      flex-direction: column;
+      .name {
+        font-weight: bolder;
+      }
+      .price {
+        del {
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: #19231a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  p {
+    font-weight: 400;
+  }
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1em;
+}
+
+.card {
+  background-color: #9a6c3857;
+  height: 335px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .card__image__container {
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  .card__body {
+    display: flex;
+    flex-direction: column;
+    .name {
+      font-weight: bolder;
+    }
+    .price {
+      del {
+        color: red;
+      }
+    }
+  }
+}
+
+.notice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    margin-top: 20px;
+  }
+}
+
+.contact {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    margin-top: 20px;
+  }
+  form {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    label {
+      font-size: 20px;
+      outline: none;
+      border: none;
+    }
+    input {
+      min-width: 250px;
+      padding: 10px;
+      outline: none;
+      border: none;
+      border-radius: 2px;
+    }
+    textarea {
+      height: 120px;
+      min-width: 250px;
+      outline: none;
+      border: none;
+      border-radius: 2px;
+    }
+    button {
+      padding: 10px;
+      margin-top: 20px;
+      font-size: 20px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+    }
+  }
+}

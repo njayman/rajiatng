@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <MessengerCustomerChat
-        pageID="110716174131526"
+        pageId="110716174131526"
         appId="3291538894291106"
       />
       <Layout>

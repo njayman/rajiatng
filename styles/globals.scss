@@ -1,3 +1,7 @@
+$phone-width: 640px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
 $linkColor: #cc3f0c;
 html,
@@ -7,12 +11,22 @@ body {
   background-color: #d8cbc7;
 }
 
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #cc3f0c;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -24,23 +38,75 @@ a {
   margin: 0;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.product__details {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  .product__identity {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    @media (max-width: #{$phone-width}) {
+      flex-direction: column;
+    }
+    img {
+      height: 20rem;
+      width: 20rem;
+      @media (max-width: #{$phone-width}) {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .product__info {
+      padding: 10px;
+    }
+  }
+  .product__description {
+    background: #e4e4e4;
+    padding: 20px;
+    margin-top: 20px;
+  }
+}
+
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
 .navbar {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  img {
-    height: 40px;
-    margin: 10px auto 10px 10px;
+  &__icon {
+    img {
+      height: 40px;
+      margin: 10px auto 10px 10px;
+    }
   }
-  a {
-    margin: 10px;
-    font-weight: 700;
-    transition: all 0.2s ease-in-out;
-    &:hover {
-      color: $linkColor;
-      transform: scale(1.2);
+  &__menu {
+    display: flex;
+    flex-wrap: wrap;
+    a {
+      margin: 10px;
+      font-weight: 700;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        color: $linkColor;
+        transform: scale(1.2);
+      }
     }
   }
 }
@@ -57,16 +123,24 @@ a {
   .hero-card {
     background-color: #bebebed2;
     padding: 50px;
+
     h4 {
       font-size: 35px;
     }
-    button {
-      padding: 10px;
+
+    .btn {
+      padding: 1rem;
       margin-top: 20px;
       font-size: 20px;
       border: none;
       outline: none;
       border-radius: 5px;
+    }
+    .btn:hover {
+      transform: scale(1.02);
+      transition: transform 200ms ease-in;
+      background: #cc3f0c;
+      color: #d8cbc7;
     }
   }
   .hero-product-card {
@@ -85,6 +159,7 @@ a {
     .card__body {
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       .name {
         font-weight: bolder;
       }
@@ -109,43 +184,77 @@ a {
 }
 
 .products {
-  display: flex;
+  /*display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center;*/
   padding: 10px;
 }
 
 .product-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
+  grid-gap: 2rem;
+  justify-content: center;
 }
 
 .card {
-  background-color: #9a6c3857;
-  height: 335px;
+  overflow: hidden;
+  box-shadow: 0px 2px 20px #9a6c3877;
   border-radius: 5px;
   display: flex;
+  background-color: rgb(241, 241, 241);
   flex-direction: column;
   justify-content: space-between;
-  .card__image__container {
-    img {
-      width: 200px;
-      height: 200px;
-    }
-  }
-  .card__body {
+  transition: transform 200ms ease-in;
+  &__body {
     display: flex;
     flex-direction: column;
-    .name {
-      font-weight: bolder;
+  }
+  &__image {
+    height: 12rem;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__name {
+    padding: 1rem;
+  }
+
+  &__price {
+    padding: 0 1rem;
+    del {
+      color: red;
     }
-    .price {
-      del {
-        color: red;
-      }
-    }
+  }
+
+  &__quantity {
+    padding: 0 1rem;
+  }
+
+  &__btn {
+    padding: 0.8rem;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0.5rem 1rem;
+    border: 2px solid #cc3f0c;
+    outline: none;
+    background: transparent;
+    color: #cc3f0c;
+    border-radius: 5px;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &:hover &__btn {
+    background: #cc3f0c;
+    color: #ffffff;
+  }
+
+  &__btn:hover {
+    cursor: pointer;
   }
 }
 

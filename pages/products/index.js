@@ -1,8 +1,8 @@
 import { Fragment, useState, useEffect } from 'react'
 import Head from 'next/head'
-import Layout from './components/layouts/Layout'
+import Layout from '../components/layouts/Layout'
 import axios from 'axios'
-import Card from './components/partials/Card'
+import Card from '../components/partials/Card'
 
 const Shop = () => {
     const [products, setProducts] = useState([])
@@ -20,11 +20,11 @@ const Shop = () => {
     return (
         <Fragment>
             <Head>
-                <title>Shop | RajiaTnG</title>
+                <title>Products | RajiaTnG</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <div className="products">
-                <h1>Shop : Our products</h1>
+            <div className="products container">
+                <h1>Our products</h1>
                 <div className="product-container">
                     {products?.map((product, id) => (
                         <Card key={id} product={product} />
